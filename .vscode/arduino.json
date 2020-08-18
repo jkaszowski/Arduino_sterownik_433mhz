@@ -1,0 +1,7 @@
+{
+    "board": "arduino:avr:mega",
+    "configuration": "cpu=atmega2560",
+    "sketch": "sterownik\\sterownik.ino",
+    "programmer": "AVR ISP",
+    "port": "COM10"
+}
