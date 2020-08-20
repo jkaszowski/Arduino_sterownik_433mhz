@@ -209,246 +209,246 @@ void loop(){
         wylaczono[1] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_3) && timer2.available())   //PRZYCISKI DO ROLETY 2
+    if (!digitalRead(PRZYCISK_3))   //PRZYCISKI DO ROLETY 2
     {
-        while(!digitalRead(PRZYCISK_3)){
-            if(abs(zmierzPrad(A2)-512)<PROG_PRADOWY){
-                roleta(2,1);
-            }else{
-                roleta(2,0);
-            }
+        if(abs(zmierzPrad(A2)-512)<PROG_PRADOWY){
+            stan_rolety[2] = 1;
+            wylaczono[2] = 0;
+        }else{
+            stan_rolety[2] = 0;
+            wylaczono[2] = 1;
         }
-        timer2.restart();
-    }else if (!digitalRead(PRZYCISK_4) && timer2.available())
-    {
-        while(!digitalRead(PRZYCISK_4)){
-            if(abs(zmierzPrad(A2)-512)<PROG_PRADOWY){
-                roleta(2,2);
-            }else{
-                roleta(2,0);
-            }
+    }else if (!digitalRead(PRZYCISK_4)){
+        if(abs(zmierzPrad(A2)-512)<PROG_PRADOWY){
+            stan_rolety[2] = 3;
+            wylaczono[2] = 0;
+        }else{
+            stan_rolety[1] = 0;
+            wylaczono[2] = 1;
         }
-        timer2.restart();
-    }
-  //-----------------------------------
-    if (!digitalRead(PRZYCISK_5) && timer3.available())   //PRZYCISKI DO ROLETY 3
-    {
-        while(!digitalRead(PRZYCISK_5)){
-            if(abs(zmierzPrad(A3)-512)<PROG_PRADOWY){
-                roleta(3,1);
-            }else{
-                roleta(3,0);
-            }
-        }
-        timer3.restart();
-    }else if (!digitalRead(PRZYCISK_6) && timer3.available())
-    {
-        while(!digitalRead(PRZYCISK_6)){
-            if(abs(zmierzPrad(A3)-512)<PROG_PRADOWY){
-                roleta(3,2);
-            }else{
-                roleta(3,0);
-            }
-        }
-        timer3.restart();
-    }
-  //-----------------------------------
-    if (!digitalRead(PRZYCISK_7) && timer4.available())   //PRZYCISKI DO ROLETY 4
-    {
-        while(!digitalRead(PRZYCISK_7)){
-            if(abs(zmierzPrad(A4)-512)<PROG_PRADOWY){
-                roleta(4,1);
-            }else{
-                roleta(4,0);
-            }
-        }
-        timer4.restart();
-    }else if (!digitalRead(PRZYCISK_8) && timer4.available())
-    {
-        while(!digitalRead(PRZYCISK_8)){
-            if(abs(zmierzPrad(A4)-512)<PROG_PRADOWY){
-                roleta(4,2);
-            }else{
-                roleta(4,0);
-            }
-        }
-        timer4.restart();
+    }else{
+        if(!wylaczono[2])stan_rolety[2] = 0;
+        wylaczono[2] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_9) && timer5.available())   //PRZYCISKI DO ROLETY 5
+    if (!digitalRead(PRZYCISK_5))   //PRZYCISKI DO ROLETY 3
     {
-        while(!digitalRead(PRZYCISK_9)){
-            if(abs(zmierzPrad(A5)-512)<PROG_PRADOWY){
-                roleta(5,1);
-            }else{
-                roleta(5,0);
-            }
+        if(abs(zmierzPrad(A3)-512)<PROG_PRADOWY){
+            stan_rolety[3] = 1;
+            wylaczono[3] = 0;
+        }else{
+            stan_rolety[3] = 0;
+            wylaczono[3] = 1;
         }
-        timer5.restart();
-    }else if (!digitalRead(PRZYCISK_10) && timer5.available())
-    {
-        while(!digitalRead(PRZYCISK_10)){
-            if(abs(zmierzPrad(A5)-512)<PROG_PRADOWY){
-                roleta(5,2);
-            }else{
-                roleta(5,0);
-            }
+    }else if (!digitalRead(PRZYCISK_6)){
+        if(abs(zmierzPrad(A3)-512)<PROG_PRADOWY){
+            stan_rolety[3] = 3;
+            wylaczono[3] = 0;
+        }else{
+            stan_rolety[3] = 0;
+            wylaczono[3] = 1;
         }
-        timer5.restart();
+    }else{
+        if(!wylaczono[3])stan_rolety[3] = 0;
+        wylaczono[3] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_11) && timer6.available())   //PRZYCISKI DO ROLETY 6
+    if (!digitalRead(PRZYCISK_7))   //PRZYCISKI DO ROLETY 4
     {
-        while(!digitalRead(PRZYCISK_11)){
-            if(abs(zmierzPrad(A6)-512)<PROG_PRADOWY){
-                roleta(6,1);
-            }else{
-                roleta(6,0);
-            }
+        if(abs(zmierzPrad(A4)-512)<PROG_PRADOWY){
+            stan_rolety[4] = 1;
+            wylaczono[4] = 0;
+        }else{
+            stan_rolety[4] = 0;
+            wylaczono[4] = 1;
         }
-        timer6.restart();
-    }else if (!digitalRead(PRZYCISK_12) && timer6.available())
-    {
-        while(!digitalRead(PRZYCISK_12)){
-            if(abs(zmierzPrad(A6)-512)<PROG_PRADOWY){
-                roleta(6,2);
-            }else{
-                roleta(6,0);
-            }
+    }else if (!digitalRead(PRZYCISK_8)){
+        if(abs(zmierzPrad(A4)-512)<PROG_PRADOWY){
+            stan_rolety[4] = 3;
+            wylaczono[4] = 0;
+        }else{
+            stan_rolety[4] = 0;
+            wylaczono[4] = 1;
         }
-        timer6.restart();
+    }else{
+        if(!wylaczono[4])stan_rolety[4] = 0;
+        wylaczono[4] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_13) && timer7.available())   //PRZYCISKI DO ROLETY 7
+    if (!digitalRead(PRZYCISK_9))   //PRZYCISKI DO ROLETY 5
     {
-        while(!digitalRead(PRZYCISK_13)){
-            if(abs(zmierzPrad(A5)-512)<PROG_PRADOWY){
-                roleta(7,1);
-            }else{
-                roleta(7,0);
-            }
+        if(abs(zmierzPrad(A5)-512)<PROG_PRADOWY){
+            stan_rolety[5] = 1;
+            wylaczono[5] = 0;
+        }else{
+            stan_rolety[5] = 0;
+            wylaczono[5] = 1;
         }
-        timer7.restart();
-    }else if (!digitalRead(PRZYCISK_14) && timer7.available())
-    {
-        while(!digitalRead(PRZYCISK_14)){
-            if(abs(zmierzPrad(A7)-512)<PROG_PRADOWY){
-                roleta(7,2);
-            }else{
-                roleta(7,0);
-            }
+    }else if (!digitalRead(PRZYCISK_10)){
+        if(abs(zmierzPrad(A5)-512)<PROG_PRADOWY){
+            stan_rolety[5] = 3;
+            wylaczono[5] = 0;
+        }else{
+            stan_rolety[5] = 0;
+            wylaczono[5] = 1;
         }
-        timer7.restart();
+    }else{
+        if(!wylaczono[5])stan_rolety[5] = 0;
+        wylaczono[5] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_15) && timer8.available())   //PRZYCISKI DO ROLETY 8
+    if (!digitalRead(PRZYCISK_11))   //PRZYCISKI DO ROLETY 6
     {
-        while(!digitalRead(PRZYCISK_15)){
-            if(abs(zmierzPrad(A8)-512)<PROG_PRADOWY){
-                roleta(8,1);
-            }else{
-                roleta(8,0);
-            }
+        if(abs(zmierzPrad(A6)-512)<PROG_PRADOWY){
+            stan_rolety[6] = 1;
+            wylaczono[6] = 0;
+        }else{
+            stan_rolety[6] = 0;
+            wylaczono[6] = 1;
         }
-        timer8.restart();
-    }else if (!digitalRead(PRZYCISK_16) && timer8.available())
-    {
-        while(!digitalRead(PRZYCISK_16)){
-            if(abs(zmierzPrad(A8)-512)<PROG_PRADOWY){
-                roleta(8,2);
-            }else{
-                roleta(8,0);
-            }
+    }else if (!digitalRead(PRZYCISK_12)){
+        if(abs(zmierzPrad(A6)-512)<PROG_PRADOWY){
+            stan_rolety[6] = 3;
+            wylaczono[6] = 0;
+        }else{
+            stan_rolety[6] = 0;
+            wylaczono[6] = 1;
         }
-        timer8.restart();
+    }else{
+        if(!wylaczono[6])stan_rolety[6] = 0;
+        wylaczono[6] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_17) && timer9.available())   //PRZYCISKI DO ROLETY 9
+    if (!digitalRead(PRZYCISK_13))   //PRZYCISKI DO ROLETY 7
     {
-        while(!digitalRead(PRZYCISK_17)){
-            if(abs(zmierzPrad(A9)-512)<PROG_PRADOWY){
-                roleta(9,1);
-            }else{
-                roleta(9,0);
-            }
+        if(abs(zmierzPrad(A7)-512)<PROG_PRADOWY){
+            stan_rolety[7] = 1;
+            wylaczono[7] = 0;
+        }else{
+            stan_rolety[7] = 0;
+            wylaczono[7] = 1;
         }
-        timer9.restart();
-    }else if (!digitalRead(PRZYCISK_18) && timer9.available())
-    {
-        while(!digitalRead(PRZYCISK_18)){
-            if(abs(zmierzPrad(A9)-512)<PROG_PRADOWY){
-                roleta(9,2);
-            }else{
-                roleta(9,0);
-            }
+    }else if (!digitalRead(PRZYCISK_14)){
+        if(abs(zmierzPrad(A7)-512)<PROG_PRADOWY){
+            stan_rolety[7] = 3;
+            wylaczono[7] = 0;
+        }else{
+            stan_rolety[7] = 0;
+            wylaczono[7] = 1;
         }
-        timer9.restart();
+    }else{
+        if(!wylaczono[7])stan_rolety[7] = 0;
+        wylaczono[7] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_19) && timer10.available())   //PRZYCISKI DO ROLETY 10
+    if (!digitalRead(PRZYCISK_15))   //PRZYCISKI DO ROLETY 8
     {
-        while(!digitalRead(PRZYCISK_19)){
-            if(abs(zmierzPrad(A10)-512)<PROG_PRADOWY){
-                roleta(10,1);
-            }else{
-                roleta(10,0);
-            }
+        if(abs(zmierzPrad(A8)-512)<PROG_PRADOWY){
+            stan_rolety[8] = 1;
+            wylaczono[8] = 0;
+        }else{
+            stan_rolety[8] = 0;
+            wylaczono[8] = 1;
         }
-        timer10.restart();
-    }else if (!digitalRead(PRZYCISK_20) && timer10.available())
-    {
-        while(!digitalRead(PRZYCISK_20)){
-            if(abs(zmierzPrad(A10)-512)<PROG_PRADOWY){
-                roleta(10,2);
-            }else{
-                roleta(10,0);
-            }
+    }else if (!digitalRead(PRZYCISK_16)){
+        if(abs(zmierzPrad(A8)-512)<PROG_PRADOWY){
+            stan_rolety[8] = 3;
+            wylaczono[8] = 0;
+        }else{
+            stan_rolety[8] = 0;
+            wylaczono[8] = 1;
         }
-        timer10.restart();
+    }else{
+        if(!wylaczono[8])stan_rolety[8] = 0;
+        wylaczono[8] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_21) && timer11.available())   //PRZYCISKI DO ROLETY 11
+    if (!digitalRead(PRZYCISK_17))   //PRZYCISKI DO ROLETY 9
     {
-        while(!digitalRead(PRZYCISK_21)){
-            if(abs(zmierzPrad(A11)-512)<PROG_PRADOWY){
-                roleta(11,1);
-            }else{
-                roleta(11,0);
-            }
+        if(abs(zmierzPrad(A9)-512)<PROG_PRADOWY){
+            stan_rolety[9] = 1;
+            wylaczono[9] = 0;
+        }else{
+            stan_rolety[9] = 0;
+            wylaczono[9] = 1;
         }
-        timer11.restart();
-    }else if (!digitalRead(PRZYCISK_22) && timer11.available())
-    {
-        while(!digitalRead(PRZYCISK_22)){
-            if(abs(zmierzPrad(A11)-512)<PROG_PRADOWY){
-                roleta(11,2);
-            }else{
-                roleta(11,0);
-            }
+    }else if (!digitalRead(PRZYCISK_18)){
+        if(abs(zmierzPrad(A9)-512)<PROG_PRADOWY){
+            stan_rolety[9] = 3;
+            wylaczono[9] = 0;
+        }else{
+            stan_rolety[9] = 0;
+            wylaczono[9] = 1;
         }
-        timer11.restart();
+    }else{
+        if(!wylaczono[9])stan_rolety[9] = 0;
+        wylaczono[9] = 1;
     }
     //-----------------------------------
-    if (!digitalRead(PRZYCISK_23) && timer12.available())   //PRZYCISKI DO ROLETY 12
+    if (!digitalRead(PRZYCISK_19))   //PRZYCISKI DO ROLETY 10
     {
-        while(!digitalRead(PRZYCISK_23)){
-            if(abs(zmierzPrad(A12)-512)<PROG_PRADOWY){
-                roleta(12,1);
-            }else{
-                roleta(12,0);
-            }
+        if(abs(zmierzPrad(A10)-512)<PROG_PRADOWY){
+            stan_rolety[10] = 1;
+            wylaczono[10] = 0;
+        }else{
+            stan_rolety[10] = 0;
+            wylaczono[10] = 1;
         }
-        timer12.restart();
-    }else if (!digitalRead(PRZYCISK_24) && timer12.available())
+    }else if (!digitalRead(PRZYCISK_20)){
+        if(abs(zmierzPrad(A10)-512)<PROG_PRADOWY){
+            stan_rolety[10] = 3;
+            wylaczono[10] = 0;
+        }else{
+            stan_rolety[10] = 0;
+            wylaczono[10] = 1;
+        }
+    }else{
+        if(!wylaczono[10])stan_rolety[10] = 0;
+        wylaczono[10] = 1;
+    }
+    //-----------------------------------
+    if (!digitalRead(PRZYCISK_21))   //PRZYCISKI DO ROLETY 11
     {
-        while(!digitalRead(PRZYCISK_24)){
-            if(abs(zmierzPrad(A12)-512)<PROG_PRADOWY){
-                roleta(12,2);
-            }else{
-                roleta(12,0);
-            }
+        if(abs(zmierzPrad(A11)-512)<PROG_PRADOWY){
+            stan_rolety[11] = 1;
+            wylaczono[11] = 0;
+        }else{
+            stan_rolety[11] = 0;
+            wylaczono[11] = 1;
         }
-        timer12.restart();
+    }else if (!digitalRead(PRZYCISK_22)){
+        if(abs(zmierzPrad(A11)-512)<PROG_PRADOWY){
+            stan_rolety[11] = 3;
+            wylaczono[11] = 0;
+        }else{
+            stan_rolety[11] = 0;
+            wylaczono[11] = 1;
+        }
+    }else{
+        if(!wylaczono[11])stan_rolety[11] = 0;
+        wylaczono[11] = 1;
+    }
+    //-----------------------------------
+    if (!digitalRead(PRZYCISK_23))   //PRZYCISKI DO ROLETY 12
+    {
+        if(abs(zmierzPrad(A12)-512)<PROG_PRADOWY){
+            stan_rolety[12] = 1;
+            wylaczono[12] = 0;
+        }else{
+            stan_rolety[12] = 0;
+            wylaczono[12] = 1;
+        }
+    }else if (!digitalRead(PRZYCISK_24)){
+        if(abs(zmierzPrad(A12)-512)<PROG_PRADOWY){
+            stan_rolety[12] = 3;
+            wylaczono[12] = 0;
+        }else{
+            stan_rolety[12] = 0;
+            wylaczono[12] = 1;
+        }
+    }else{
+        if(!wylaczono[12])stan_rolety[12] = 0;
+        wylaczono[12] = 1;
     }
   //-----------------------------------------------------------------------------
   // steruj roletami wg sygnałów z pilota
