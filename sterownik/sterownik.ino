@@ -83,7 +83,7 @@ void zmienStan(byte nr);
 int prad(byte analogIn);
 int Max(int input[ILOSC_PROBEK]);
 int zmierzPrad(int nr);
-
+int wylaczono[14] = {};
 void setup() {
   mySwitch.enableReceive(0);  // Receiver on interrupt 0 => that is pin #2mySwitch
   Serial.begin(9600);
@@ -187,26 +187,26 @@ void loop(){
     }
     //-----------------------------------------------------------------------------
     // sprawdzaj sygnały z przycisków
-    if (!digitalRead(PRZYCISK_1) && timer1.available())   //PRZYCISKI DO ROLETY 1
+    if (!digitalRead(PRZYCISK_1))   //PRZYCISKI DO ROLETY 1
     {
-        while(!digitalRead(PRZYCISK_1)){
-            if(abs(zmierzPrad(A1)-512)<PROG_PRADOWY){
-                roleta(1,1);
-            }else{
-                roleta(1,0);
-            }
+        if(abs(zmierzPrad(A1)-512)<PROG_PRADOWY){
+            stan_rolety[1] = 1;
+            wylaczono[1] = 0;
+        }else{
+            stan_rolety[1] = 0;
+            wylaczono[1] = 1;
         }
-        timer1.restart();
-    }else if (!digitalRead(PRZYCISK_2) && timer1.available())
-    {
-        while(!digitalRead(PRZYCISK_2)){
-            if(abs(zmierzPrad(A1)-512)<PROG_PRADOWY){
-                roleta(1,2);
-            }else{
-                roleta(1,0);
-            }
+    }else if (!digitalRead(PRZYCISK_2)){
+        if(abs(zmierzPrad(A1)-512)<PROG_PRADOWY){
+            stan_rolety[1] = 3;
+            wylaczono[1] = 0;
+        }else{
+            stan_rolety[1] = 0;
+            wylaczono[1] = 1;
         }
-        timer1.restart();
+    }else{
+        if(!wylaczono[1])stan_rolety[1] = 0;
+        wylaczono[1] = 1;
     }
     //-----------------------------------
     if (!digitalRead(PRZYCISK_3) && timer2.available())   //PRZYCISKI DO ROLETY 2
@@ -752,7 +752,6 @@ if (stan_rolety[13]==0)
     }
 }
 //-----------------------------------------------------------------------------
-Serial.print("...");
 delay(10);
 }
 
